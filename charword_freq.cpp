@@ -11,3 +11,8 @@
 // Print the frequency of characters in the file to the screen;
 // 4. Be able to use an ifstream object;
 // *************************************************************************************************************************/
+
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <string>
