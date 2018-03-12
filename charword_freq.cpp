@@ -8,7 +8,7 @@
 // Description:
 // 1. Read the contents of a data file (mytext.dat);
 // 2. Process the frequency of characters (a-z) that appear in the data file 3.
-// Print the frequency of characters in the file to the screen;
+// 3. Print the frequency of characters in the file to the screen;
 // 4. Be able to use an ifstream object;
 // *************************************************************************************************************************/
 
@@ -16,3 +16,38 @@
 #include <iomanip>
 #include <fstream>
 #include <string>
+using namespace std;
+
+//function prototypes
+string readFile();
+
+//main function
+int main() {
+
+  readFile();
+
+  return 0;
+}
+//function definitions
+string readFile(){
+  ifstream inFile;
+
+  inFile.open("mytext.dat");
+
+  string data = "";
+
+  if (inFile.fail()) //if file not found print message and exit program
+	{
+		cout << "Input file did not open correctly" << endl;
+		exit(1);
+	}
+
+  while (!inFile.eof())
+  {
+    inFile >> data;
+    std::cout << data << '\n';
+
+  }
+  inFile.close();
+  return 0;
+}
