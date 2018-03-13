@@ -20,11 +20,13 @@ using namespace std;
 
 //function prototypes
 string readFile();
+void wordCounter();
 
 //main function
 int main() {
 
   readFile();
+  wordCounter();
 
   return 0;
 }
@@ -44,11 +46,22 @@ string readFile(){
     while (getline(inFile, word)) {
       sentence = sentence + " " + word;
     }
-
     std::cout << "Block of text in the data file: " << sentence << '\n';
-
   }
-
+  inFile.close();
   return sentence;
+}
 
+void wordCounter(){
+  ifstream inFile;
+  inFile.open("mytext.dat");
+  int wordCount = 0;
+  string word;
+
+  while (inFile >> word) {
+    wordCount++;
+  }
+  cout << wordCount << " words" << endl;
+  return;
+  inFile.close();
 }
