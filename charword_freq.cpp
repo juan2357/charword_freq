@@ -16,17 +16,26 @@
 #include <iomanip>
 #include <fstream>
 #include <string>
+#include <cctype>
 using namespace std;
 
 //function prototypes
 string readFile();
 void wordCounter();
+int letterCounter(char letter);
 
 //main function
 int main() {
-
+  char letter;
   readFile();
   wordCounter();
+
+  for (letter = 'a'; letter <= 'z'; letter++) {
+    if (letter != 0) {
+      std::cout << letter << " " << letterCounter(letter) << endl;
+    }
+  }
+
 
   return 0;
 }
@@ -64,4 +73,22 @@ void wordCounter(){
   cout << wordCount << " words" << endl;
   return;
   inFile.close();
+}
+
+int letterCounter(char letter){
+  ifstream inFile;
+  char c;
+  inFile.open("mytext.dat");
+  inFile.get(c);
+
+  int letterCount = 0;
+
+  while (!inFile.eof()){
+    if (tolower(c) == letter) {
+      letterCount++;
+    }
+    inFile.get(c);
+  }
+  inFile.close();
+  return letterCount;
 }
