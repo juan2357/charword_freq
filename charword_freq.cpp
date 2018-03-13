@@ -34,20 +34,21 @@ string readFile(){
 
   inFile.open("mytext.dat");
 
-  string data = "";
-
-  if (inFile.fail()) //if file not found print message and exit program
-	{
+  string word, sentence =  " ";
+  //if file not found print message and exit program
+  if (inFile.fail()){
 		cout << "Input file did not open correctly" << endl;
 		exit(1);
 	}
+  while (!inFile.eof()){
+    while (getline(inFile, word)) {
+      sentence = sentence + " " + word;
+    }
 
-  while (!inFile.eof())
-  {
-    inFile >> data;
-    std::cout << data << '\n';
+    std::cout << "Block of text in the data file: " << sentence << '\n';
 
   }
-  inFile.close();
-  return 0;
+
+  return sentence;
+
 }
