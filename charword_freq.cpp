@@ -19,6 +19,7 @@
 #include <cctype>
 using namespace std;
 
+
 //function prototypes
 string readFile();
 void wordCounter();
@@ -31,8 +32,8 @@ int main() {
   wordCounter();
 
   for (letter = 'a'; letter <= 'z'; letter++) {
-    if (letter != 0) {
-      std::cout << letter << " " << letterCounter(letter) << endl;
+    if (letterCounter(letter) != 0) {
+      std::cout << std::left << setw(2)<< letterCounter(letter) << " " << letter << endl;
     }
   }
 
